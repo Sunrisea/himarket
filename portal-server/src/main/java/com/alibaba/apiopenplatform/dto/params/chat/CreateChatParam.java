@@ -60,4 +60,6 @@ public class CreateChatParam implements InputConverter<Chat> {
      * If need memory
      */
     private Boolean needMemory = true;
+    
+    private Boolean enableWebSearch = false;
 }

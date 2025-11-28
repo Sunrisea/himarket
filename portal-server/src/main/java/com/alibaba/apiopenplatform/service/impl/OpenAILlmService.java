@@ -3,6 +3,7 @@ package com.alibaba.apiopenplatform.service.impl;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.StrUtil;
 import com.alibaba.apiopenplatform.dto.params.chat.ChatContent;
+import com.alibaba.apiopenplatform.dto.params.chat.WebSearchOptions;
 import com.alibaba.apiopenplatform.dto.result.httpapi.DomainResult;
 import com.alibaba.apiopenplatform.dto.result.httpapi.HttpRouteResult;
 import com.alibaba.apiopenplatform.dto.result.model.ModelConfigResult;
@@ -52,7 +53,11 @@ public class OpenAILlmService extends AbstractLlmService {
                 .maxTokens(modelFeature.getMaxTokens())
                 .temperature(modelFeature.getTemperature())
                 .build();
-
+        
+        if(modelFeature.getWebSearch() && param.getEnableWebSearch()){
+            requestBody.setWebSearchOptions(new WebSearchOptions());
+        }
+        
         return LlmChatRequest.builder()
                 .url(url)
                 .method(HttpMethod.POST)

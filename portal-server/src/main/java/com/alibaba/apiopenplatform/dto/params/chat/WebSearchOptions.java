@@ -17,32 +17,15 @@
  * under the License.
  */
 
-package com.alibaba.apiopenplatform.support.product;
+package com.alibaba.apiopenplatform.dto.params.chat;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 @Data
-public class ModelFeature {
-    /**
-     * Model name, e.g. "qwen-max", "gpt-4"
-     */
-    private String model;
+public class WebSearchOptions {
     
-    /**
-     * Max tokens for response
-     */
-    private Integer maxTokens;
-    
-    /**
-     * Temperature for sampling (0.0 - 2.0)
-     */
-    private Double temperature;
-    
-    /**
-     * Enable streaming response
-     */
-    private Boolean streaming;
-    
-    private Boolean webSearch;
-}
+    @JsonProperty("search_context_size")
+    private String searchContextSize = "medium";
 
+}
